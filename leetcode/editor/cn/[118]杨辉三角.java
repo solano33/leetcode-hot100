@@ -47,12 +47,10 @@ class Solution {
      * @param numRows
      * @return
      */
-    public List<List<Integer>> generate2(int n) {
+    public List<List<Integer>> generate1(int n) {
         List<List<Integer>> res = new ArrayList<>();
         if (n == 1) {
-            List<Integer> first = new ArrayList<>();
-            first.add(1);
-            res.add(first);
+            res.add(Collections.singletonList(1));
             return res;
         }
         
@@ -72,6 +70,22 @@ class Solution {
                 per.add(dp[i][j]);
             }
             res.add(per);
+        }
+        return res;
+    }
+
+    public List<List<Integer>> generate2(int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    row.add(1);
+                } else {
+                    row.add(res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));
+                }
+            }
+            res.add(row);
         }
         return res;
     }
