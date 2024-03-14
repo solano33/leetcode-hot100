@@ -14,6 +14,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[70]爬楼梯.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[70]爬楼梯.md" />
+              <option name="frontendQuestionId" value="leetcode.cn70" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[70]爬楼梯.java" />
+              <option name="titleSlug" value="climbing-stairs" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/en/[1]Two Sum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/en/doc/content/[1]Two Sum.md" />
+              <option name="frontendQuestionId" value="leetcode.com1" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/en/[1]Two Sum.java" />
+              <option name="titleSlug" value="two-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/[118]杨辉三角.java">
           <value>
             <LeetcodeEditor>
@@ -28,10 +50,10 @@
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/[70]爬楼梯.java">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/[70]爬楼梯.md" />
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[70]爬楼梯.md" />
               <option name="frontendQuestionId" value="leetcode.cn70" />
               <option name="host" value="leetcode.cn" />
-              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/[70]爬楼梯.java" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[70]爬楼梯.java" />
               <option name="titleSlug" value="climbing-stairs" />
             </LeetcodeEditor>
           </value>
