@@ -49,7 +49,15 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int another = target - nums[i];
+            if(map.containsKey(another)) {
+                return new int[]{i, map.get(another)};
+            }
+            map.put(nums[i], i);
+        }
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

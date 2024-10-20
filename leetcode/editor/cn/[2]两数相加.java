@@ -42,19 +42,37 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
+        // 链表题目一般都得定义一个虚拟头节点
+        ListNode dummyHead = new ListNode(-1), cur = dummyHead;
+        int tmp = 0;
+        while (l1 != null || l2 != null || tmp > 0) {
+            int v1 = l1 == null ? 0 : l1.val;
+            int v2 = l2 == null ? 0 : l2.val;
+            tmp = v1 + v2 + tmp;
+            cur.next = new ListNode(tmp % 10);
+            cur = cur.next;
+            tmp = tmp / 10;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        return dummyHead.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
