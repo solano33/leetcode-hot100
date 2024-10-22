@@ -42,22 +42,39 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {
+        return fun2(s);
+    }
+
+    public int fun1(String s) {
         int l = 0, r = 0;
         int res = 0;
+        // 表示字符出现的次数
         Map<Character, Integer> map = new HashMap<>();
-        while (l < s.length() && r < s.length()) {
-            char rc = s.charAt(r);
-            if (!map.containsKey(rc)) {
-                map.put(rc, 1);
-                r++;
-                res = Math.max(res, r - l);
-            } else {
-                // 移动左指针
-                while(l < r) {
-
-                }
+        while (r < s.length()) {
+            char rc = s.charAt(r++);
+            map.put(rc, map.getOrDefault(rc, 0) + 1);
+            while (map.get(rc) > 1) {
+                char lc = s.charAt(l++);
+                map.put(lc, map.get(lc) - 1);
             }
+            res = Math.max(res, r - l);
         }
+        return res;
+    }
+
+    public int fun2(String s) {
+        int l = -1, r = 0, res = 0;
+        // 表示字符最后一次出现的索引
+        Map<Character, Integer> map = new HashMap<>();
+        for (r = 0; r < s.length(); r++) {
+            char rc = s.charAt(r);
+            if (map.containsKey(rc)) {
+                l = Math.max(l, map.get(rc));
+            }
+            map.put(rc, r);
+            res = Math.max(res, r - l);
+        }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
