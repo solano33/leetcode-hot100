@@ -62,7 +62,26 @@
  */
 class Solution {
     public void flatten(TreeNode root) {
-        
+        fun1(root);
+    }
+
+    public void fun1(TreeNode root) {
+        List<TreeNode> tranList = tran(root);
+        for (int i = 1; i < tranList.size(); i++) {
+            TreeNode pre = tranList.get(i-1);
+            TreeNode cur = tranList.get(i);
+            pre.right = cur;
+            pre.left = null;
+        }
+    }
+
+    private List<TreeNode> tran(TreeNode root) {
+        List<TreeNode> res = new ArrayList<>();
+        if (root == null) return res;
+        res.add(root);
+        res.addAll(tran(root.left));
+        res.addAll(tran(root.right));
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
