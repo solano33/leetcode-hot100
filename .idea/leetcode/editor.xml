@@ -212,6 +212,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[17]电话号码的字母组合.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[17]电话号码的字母组合.md" />
+              <option name="frontendQuestionId" value="leetcode.cn17" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[17]电话号码的字母组合.java" />
+              <option name="titleSlug" value="letter-combinations-of-a-phone-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[19]删除链表的倒数第 N 个结点.java">
           <value>
             <LeetcodeEditor>
@@ -231,6 +242,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1]两数之和.java" />
               <option name="titleSlug" value="two-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[215]数组中的第K个最大元素.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[215]数组中的第K个最大元素.md" />
+              <option name="frontendQuestionId" value="leetcode.cn215" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[215]数组中的第K个最大元素.java" />
+              <option name="titleSlug" value="kth-largest-element-in-an-array" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -388,6 +410,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[538]把二叉搜索树转换为累加树.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[538]把二叉搜索树转换为累加树.md" />
+              <option name="frontendQuestionId" value="leetcode.cn538" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[538]把二叉搜索树转换为累加树.java" />
+              <option name="titleSlug" value="convert-bst-to-greater-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[543]二叉树的直径.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[543]二叉树的直径.md" />
+              <option name="frontendQuestionId" value="leetcode.cn543" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[543]二叉树的直径.java" />
+              <option name="titleSlug" value="diameter-of-binary-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[589]N 叉树的前序遍历.java">
           <value>
             <LeetcodeEditor>
@@ -396,6 +440,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[589]N 叉树的前序遍历.java" />
               <option name="titleSlug" value="n-ary-tree-preorder-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[617]合并二叉树.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[617]合并二叉树.md" />
+              <option name="frontendQuestionId" value="leetcode.cn617" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[617]合并二叉树.java" />
+              <option name="titleSlug" value="merge-two-binary-trees" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -440,6 +495,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[98]验证二叉搜索树.java" />
               <option name="titleSlug" value="validate-binary-search-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[LCR 059]数据流中的第 K 大元素.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[LCR 059]数据流中的第 K 大元素.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 059" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[LCR 059]数据流中的第 K 大元素.java" />
+              <option name="titleSlug" value="jBjn9C" />
             </LeetcodeEditor>
           </value>
         </entry>

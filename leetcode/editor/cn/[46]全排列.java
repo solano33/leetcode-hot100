@@ -38,8 +38,19 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+    private List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
-        
+        if (nums == null || nums.length == 0) return res;
+        dfs(nums, 0, new ArrayList<>());
+        return res;
+    }
+
+    private void dfs(int[] nums, int cur, List<Integer> nowList) {
+        if (cur == nums.length) {
+            if (nowList != null && nowList.size() == nums.length) res.add(nowList);
+        }
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
