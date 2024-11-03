@@ -40,17 +40,28 @@
 class Solution {
 
     private List<List<Integer>> res = new ArrayList<>();
+    private boolean[] flag;
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null || nums.length == 0) return res;
+        flag = new boolean[nums.length];
         dfs(nums, 0, new ArrayList<>());
         return res;
     }
 
     private void dfs(int[] nums, int cur, List<Integer> nowList) {
         if (cur == nums.length) {
-            if (nowList != null && nowList.size() == nums.length) res.add(nowList);
+            res.add(new ArrayList<>(nowList));
+            return;
         }
-
+        for (int i = 0; i < nums.length; i++) {
+            if (flag[i]) continue;
+            flag[i] = true;
+            nowList.add(nums[i]);
+            dfs(nums, cur + 1, nowList);
+            flag[i] = false;
+            int tmp = nums[i];
+            nowList.removeIf(e -> e == tmp);
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
