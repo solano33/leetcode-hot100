@@ -30,7 +30,34 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] generateMatrix(int n) {
-        
+        num = n;
+        count = n * n;
+        res = new int[n][n];
+        dfs(1, 0, 0);
+        return res;
+    }
+
+    private int num;
+    private int count;
+    private int[][] res;
+    private int flag = 0;
+    private int[] dr = new int[]{0, 1, 0, -1};
+    private int[] dc = new int[]{1, 0, -1, 0};
+
+    private boolean dfs(int idx, int r, int c) {
+        if (idx > count) return false;
+        if (r < 0 || r >= num || c < 0 || c >= num || res[r][c] != 0) {
+            flag = (flag + 1) % 4;
+            return false;
+        }
+        res[r][c] = idx;
+        for (int i = 0; i < 2; i++) {
+            int rr = r + dr[flag], cc = c + dc[flag];
+            if (dfs(idx + 1, rr, cc)) {
+                break;
+            }
+        }
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
