@@ -44,6 +44,52 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         if (numCourses <= 0 || prerequisites == null || prerequisites.length == 0) return true;
+        return dfs(numCourses, prerequisites);
+    }
+
+
+    private List<List<Integer>> edges = new ArrayList<>();
+    private int[] state;
+    private int[] stack;
+    private int index = 0;
+    private boolean dfs(int numCourses, int[][] prerequisites) {
+        for (int i = 0; i < numCourses; i++) {
+            edges.add(new ArrayList<>());
+        }
+        for (int[] cp : prerequisites) {
+            edges.get(cp[0]).add(cp[1]);
+        }
+        state = new int[numCourses];
+        stack = new int[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            if (!dfs(i)) return false;
+        }
+        System.out.println("stack = " + Arrays.toString(stack));
+        return true;
+    }
+
+    private boolean dfs(int node) {
+        // 被自己遍历过了，说明有环
+        if (state[node] == 1) return false;
+        // 被别人遍历过了
+        if (state[node] == -1) return true;
+
+        // 尝试往下遍历
+        state[node] = 1;
+        List<Integer> nextNodes = edges.get(node);
+        for (int nextNode : nextNodes) {
+            if (!dfs(nextNode)) return false;
+        }
+
+        // 全部遍历完了，设置 state，加入栈
+        state[node] = -1;
+        stack[index++] = node;
+        return true;
+    }
+
+
+
+    private boolean bfs(int numCourses, int[][] prerequisites) {
         int[] inDegree = new int[numCourses];
         for (int i = 0; i < prerequisites.length; i++) {
             inDegree[prerequisites[i][0]]++;
