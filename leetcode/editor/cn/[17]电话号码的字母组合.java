@@ -51,12 +51,13 @@ class Solution {
 
     private void dfs(String digits, int cur, String nowStr) {
         if (cur == digits.length()) {
-            if (nowStr != null && nowStr.length() != 0) res.add(nowStr);
+            res.add(nowStr);
             return;
         }
-        int index = digits.charAt(cur) - '0' - 2;
-        for (char a : list[index].toCharArray()) {
-            dfs(digits, cur + 1, nowStr + a);
+        int idx = digits.charAt(cur) - '0' - 2;
+        String s = list[idx];
+        for (int i = 0; i < s.length(); i++) {
+            dfs(digits, cur + 1, nowStr + s.charAt(i));
         }
     }
 }
