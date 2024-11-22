@@ -56,11 +56,11 @@ class Solution {
     private int[] nums;
 
     private void dfs(int idx, int target, List<Integer> nowList) {
-        if (idx == nums.length) return;
         if (target == 0) {
             res.add(new ArrayList<>(nowList));
             return;
         }
+        if (idx == nums.length) return;
         // 不选当前
         dfs(idx + 1, target, nowList);
 

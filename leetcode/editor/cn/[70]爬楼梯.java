@@ -42,7 +42,18 @@ class Solution {
     public int climbStairs(int n) {
 //        return climbStairs1(n);
 //        return climbStairs2(n);
-        return climbStairs3(n);
+        return now(n);
+    }
+
+    private int now(int n) {
+        if (n <= 2) return n;
+        int first = 1, second = 2, sum = 0;
+        for (int i = 3; i <= n; i++) {
+            sum = first + second;
+            first = second;
+            second = sum;
+        }
+        return sum;
     }
 
 
