@@ -43,11 +43,8 @@ class Solution {
         int[] x = new int[2], y = new int[2];
         x[0] = 0;
         x[1] = nums[0];
-        // 注意要从第二个房子开始, 因为第一个房子已经算过了
         for (int i = 1; i < nums.length; i++) {
-            // 当前不偷：前一个偷 / 不偷的较大值
             y[0] = Math.max(x[0], x[1]);
-            // 当前偷：前一个只能不偷 + 当前房子价值
             y[1] = x[0] + nums[i];
             x[0] = y[0];
             x[1] = y[1];
