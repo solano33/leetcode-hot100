@@ -36,17 +36,16 @@ class Solution {
         int n = s.length();
         int maxLen = 1, left = 0;
         boolean[][] dp = new boolean[n][n];
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = true;
-        }
+        for (int i = 0; i < n; i++) dp[i][i] = true;
         for (int len = 2; len <= n; len++) {
-            for (int i = 0; i + len <= n; i++) {
-                int j = i + len - 1;
-                if (s.charAt(i) != s.charAt(j)) continue;
-                if (len > 2 && !dp[i+1][j-1]) continue;
-                dp[i][j] = true;
+            for (int l = 0; l + len - 1 < n; l++) {
+                int r = l + len - 1;
+                char lc = s.charAt(l), rc = s.charAt(r);
+                if (lc != rc) continue;
+                if (len > 2 && !dp[l+1][r-1]) continue;
+                dp[l][r] = true;
                 maxLen = len;
-                left = i;
+                left = l;
             }
         }
         return s.substring(left, left + maxLen);
