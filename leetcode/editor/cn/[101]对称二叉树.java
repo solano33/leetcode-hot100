@@ -50,42 +50,17 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        return fun2(root);
-    }
-
-    // 方法一：递归
-    public boolean fun1(TreeNode root) {
         if (root == null) return true;
-        return check1(root.left, root.right);
+        return dfs(root.left, root.right);
     }
 
-    private boolean check1(TreeNode a, TreeNode b) {
-        if (a == null && b == null) return true;
-        if (a == null || b == null) return false;
-        return a.val == b.val && check1(a.left, b.right) && check1(a.right, b.left);
+    private boolean dfs(TreeNode left, TreeNode right) {
+        if (left == null && right == null) return true;
+        if (left == null || right == null) return false;
+        return left.val == right.val
+                && dfs(left.left, right.right)
+                && dfs(left.right, right.left);
     }
 
-    // 方法二：迭代
-    public boolean fun2(TreeNode root) {
-        if (root == null) return true;
-        return check2(root.left, root.right);
-    }
-
-    private boolean check2(TreeNode a, TreeNode b) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(a);
-        queue.offer(b);
-        while (!queue.isEmpty()) {
-            TreeNode left = queue.poll();
-            TreeNode right = queue.poll();
-            if (left == null && right == null) continue;
-            if (left == null || right == null || left.val != right.val) return false;
-            queue.offer(left.left);
-            queue.offer(right.right);
-            queue.offer(left.right);
-            queue.offer(right.left);
-        }
-        return true;
-    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

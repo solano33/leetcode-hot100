@@ -58,14 +58,16 @@ class Solution {
         return fun1(root);
     }
 
-    public boolean fun1(TreeNode root) {
-        return dfs(root, (long)Integer.MIN_VALUE - 1L, (long)Integer.MAX_VALUE + 1L);
+    private boolean fun1(TreeNode root) {
+        if (root == null) return true;
+        return dfs(root, (long) Integer.MIN_VALUE - 1, (long) Integer.MAX_VALUE + 1);
     }
 
-    public boolean dfs(TreeNode root, long min, long max) {
+    private boolean dfs(TreeNode root, long min, long max) {
         if (root == null) return true;
-        if (root.val <= min || root.val >= max) return false;
-        return dfs(root.left, min, root.val) && dfs(root.right, root.val, max);
+        if (root.val >= max || root.val <= min) return false;
+        return dfs(root.left, min, root.val)
+                && dfs(root.right, root.val, max);
     }
 
 //    // 错误做法，没有检测右子树
