@@ -60,11 +60,10 @@ class Solution {
         if (root1 == null && root2 == null) return null;
         if (root1 == null) return root2;
         if (root2 == null) return root1;
-        int now = root1.val + root2.val;
-        TreeNode node = new TreeNode(now);
-        node.left = dfs(root1.left, root2.left);
-        node.right = dfs(root1.right, root2.right);
-        return node;
+        int val = root1.val + root2.val;
+        TreeNode left = dfs(root1.left, root2.left);
+        TreeNode right = dfs(root1.right, root2.right);
+        return new TreeNode(val, left, right);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

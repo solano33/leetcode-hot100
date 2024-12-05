@@ -61,6 +61,8 @@ class Solution {
 
     private TreeNode target = null;
     /**
+     * 从 root 开始找，如果找到 q 则第二位置为 1，如果找到 p 则第一位置为 1
+     *
      * 00: 表示没有找到pq
      * 01：表示找到了q，没找到p
      * 10: 表示找到了p，没找到q
@@ -75,9 +77,7 @@ class Solution {
         int rres = dfs(root.right, p, q);
         res |= lres;
         res |= rres;
-        if (res == 3 && target == null) {
-            target = root;
-        }
+        if (res == 3 && target == null) target = root;
         return res;
     }
 }

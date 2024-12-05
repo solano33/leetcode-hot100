@@ -48,8 +48,8 @@ class Solution {
         return fun1(nums);
     }
 
-    public int fun1(int[] nums) {
-        if (nums == null || nums.length == 0) return -1;
+    private int fun1(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
         int res = 0;
         for (int i = 0; i < nums.length; i++) {
             res ^= nums[i];

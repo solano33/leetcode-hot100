@@ -57,12 +57,16 @@ class Solution {
     }
 
     private int res = Integer.MIN_VALUE;
-    public int dfs(TreeNode root) {
+
+    /**
+     * 从 root 开始的最大路径
+     */
+    private int dfs(TreeNode root) {
         if (root == null) return 0;
-        int l = Math.max(dfs(root.left), 0);
-        int r = Math.max(dfs(root.right), 0);
-        res = Math.max(res, root.val + l + r);
-        return root.val + Math.max(l, r);
+        int left = Math.max(0, dfs(root.left));
+        int right = Math.max(0, dfs(root.right));
+        res = Math.max(res, left + right + root.val);
+        return root.val + Math.max(left, right);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
