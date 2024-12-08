@@ -58,20 +58,25 @@ class Solution {
         fun1(nums);
     }
 
-    public void fun1(int[] nums) {
-        if (nums == null) return;
+    private void fun1(int[] nums) {
+        if (nums == null || nums.length == 0) return;
         int n = nums.length;
-        int i = n - 2; // 1.找到第一个i<j & num[i] < num[j]
+        int i = n - 2;
+        // 找到第一个 i, j，满足 i < j && nums[i] < nums[j]
         while (i >= 0 && nums[i] >= nums[i+1]) i--;
-        if (i == -1) { // 没找到顺序对，说明全是逆序的
+        if (i == -1) {
+            // nums 全都是逆序，也就是最大 543321，返回字典序最小
             Arrays.sort(nums);
             return;
         }
-        // 2.从后往前找到第一个k，num[i] < num[k]，至少能找到一个num[j]
+
+        // 从后往前找到第一个nums[k] 使得 nums[k] > nums[i], 至少能找到 nums[j]
         int k = n - 1;
-        while (nums[k] <= nums[i]) k--;
+        while (k >= 0 && nums[k] <= nums[i]) k--;
+        // 交换 i，k
         swap(nums, i, k);
         Arrays.sort(nums, i + 1, n);
+        return;
     }
 
     private void swap(int[] nums, int i, int j) {

@@ -55,8 +55,37 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    private int[] scnt = new int[128]; // 滑动窗口计数
+    private int[] tcnt = new int[128]; // 固定不变
     public String minWindow(String s, String t) {
-        
+        int slen = s.length(), tlen = t.length();
+        if (slen < tlen) return "";
+        for (int i = 0; i < tlen; i++) tcnt[t.charAt(i)]++;
+
+        int minLen = slen + 1, left = -1, right = -1;
+        int l = 0, r = 0;
+        while (r < slen) {
+            scnt[s.charAt(r)]++;
+            while (check()) {
+                if (minLen > r - l + 1) {
+                    minLen = r - l + 1;
+                    left = l;
+                    right = r;
+                }
+                scnt[s.charAt(l++)]--;
+            }
+            r++;
+        }
+        if (left == -1) return "";
+
+        return s.substring(left, right + 1);
+    }
+
+    private boolean check() {
+        for (int i = 0; i < 128; i++) {
+            if (scnt[i] < tcnt[i]) return false;
+        }
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
