@@ -68,7 +68,18 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        return fun3(head);
+        return fun4(head);
+    }
+
+    public boolean fun4(ListNode head) {
+        if (head == null) return false;
+        ListNode fast = head.next, slow = head;
+        while (fast != null && fast.next != null) {
+            if (slow == fast) return true;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return false;
     }
 
     public boolean fun1(ListNode head) {

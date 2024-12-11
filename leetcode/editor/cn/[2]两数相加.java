@@ -57,14 +57,15 @@ class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // 链表题目一般都得定义一个虚拟头节点
         ListNode dummyHead = new ListNode(-1), cur = dummyHead;
-        int tmp = 0;
-        while (l1 != null || l2 != null || tmp > 0) {
+        int carry = 0;
+        while (l1 != null || l2 != null || carry > 0) {
             int v1 = l1 == null ? 0 : l1.val;
             int v2 = l2 == null ? 0 : l2.val;
-            tmp = v1 + v2 + tmp;
-            cur.next = new ListNode(tmp % 10);
+            int tmp = v1 + v2 + carry;
+            carry = tmp / 10;
+            ListNode now = new ListNode(tmp % 10);
+            cur.next = now;
             cur = cur.next;
-            tmp = tmp / 10;
             if (l1 != null) {
                 l1 = l1.next;
             }
