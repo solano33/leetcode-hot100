@@ -38,7 +38,18 @@
 class Solution {
     public void moveZeroes(int[] nums) {
 //        fun1(nums);
-        fun2(nums);
+        fun3(nums);
+    }
+
+    public void fun3(int[] nums) {
+        int l = 0, r = 1;
+        while (l < r && r < nums.length) {
+            if (nums[l] != 0) {
+                l++;
+                if (l == r) r++;
+            } else if (nums[r] == 0) r++;
+            else swap(nums, l++, r++);
+        }
     }
 
     public void fun1(int[] nums) {

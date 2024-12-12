@@ -45,6 +45,23 @@ class Solution {
         return fun2(s);
     }
 
+    public int fun3(String s) {
+        int l = 0, r = 0;
+        int res = 0;
+        // 窗口
+        Map<Character, Integer> map = new HashMap<>();
+        while (r < s.length()) {
+            char rc = s.charAt(r++);
+            map.put(rc, map.getOrDefault(rc, 0) + 1);
+            while (map.get(rc) > 1) {
+                char lc = s.charAt(l++);
+                map.put(lc, map.get(lc) - 1);
+            }
+            res = Math.max(res, r - l); // 这里 r 已经++过了，不然应该是 r-l+1
+        }
+        return res;
+    }
+
     public int fun1(String s) {
         int l = 0, r = 0;
         int res = 0;
