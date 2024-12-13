@@ -57,7 +57,18 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
 //        return fun1(head);
-        return fun5(head);
+        return fun6(head);
+    }
+
+    public ListNode fun6(ListNode head) {
+        ListNode now = head, pre = null;
+        while (now != null) {
+            ListNode tmp = now.next;
+            now.next = pre;
+            pre = now;
+            now = tmp;
+        }
+        return pre;
     }
 
     private ListNode fun5(ListNode head) {
