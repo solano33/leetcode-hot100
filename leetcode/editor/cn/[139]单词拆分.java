@@ -45,7 +45,7 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public boolean wordBreak2(String s, List<String> wordDict) {
         if (s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return true;
         visited = new int[s.length()];
         for (int i = 0; i < s.length(); i++) {
@@ -53,16 +53,37 @@ class Solution {
         }
         return dfs(s, wordDict, 0) == 1;
     }
+    // visited[i]表示从 i 下标开始到末尾能不能匹配上
+    // -1: 没匹配过   0：不能匹配   1：能匹配
     private int[] visited;
 
     private int dfs(String s, List<String> wordDict, int cur) {
         if (cur >= s.length()) return 1;
         if (visited[cur] != -1) return visited[cur];    // 减枝
-        visited[cur] = 0;
+        visited[cur] = 0;  // 默认不能匹配
         for(String w : wordDict) {
             if (s.substring(cur).startsWith(w)) {
                 visited[cur] = dfs(s, wordDict, cur + w.length());
                 if (visited[cur] == 1) return 1;        // 减枝
+            }
+        }
+        return visited[cur];
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if (s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return true;
+        visited = new int[s.length() + 1];
+        for (int i = 0; i <= s.length(); i++) visited[i] = -1;
+        return dfs2(s, wordDict, 0) == 1;
+    }
+    private int dfs2(String s, List<String> wordDict, int cur) {
+        if (cur >= s.length()) return 1;
+        if (visited[cur] != -1) return visited[cur];
+        visited[cur] = 0;
+        for (String w : wordDict) {
+            if (s.substring(cur).startsWith(w)) {
+                visited[cur] = dfs2(s, wordDict, cur + w.length());
+                if (visited[cur] == 1) return 1;
             }
         }
         return visited[cur];

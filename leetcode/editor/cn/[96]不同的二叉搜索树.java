@@ -30,15 +30,17 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int numTrees(int n) {
-        return dfs(n);
+        return dp(n);
     }
     private int dp(int n) {
         if (n <= 1) return n;
         int[] dp = new int[n+1];
         dp[0] = 1;
-        for (int len = 1; len <= n; len++) {
-            for (int x = 1; x <= len; x++) {
-                dp[len] += dp[x-1] * dp[len-x];
+        dp[1] = 1;
+        for (int len = 2; len <= n; len++) {
+            for (int root = 1; root <= len; root++) {
+                // 以 root 为根，左边有 root-1 个，右边有 len-root 个
+                dp[len] += dp[root-1] * dp[len-root];
             }
         }
         return dp[n];

@@ -49,6 +49,7 @@ class Solution {
         } else if (nums.length == 2) {
             return Math.max(nums[0], nums[1]);
         }
+        // 最后一个取不取
         return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
     }
 

@@ -38,18 +38,19 @@
 class Solution {
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
-        // x[0], x[1] 表示前一个房子不偷 | 偷的最大价值
-        // y[0], y[1] 表示当前房子不偷 | 偷的最大价值
-        int[] x = new int[2], y = new int[2];
-        x[0] = 0;
-        x[1] = nums[0];
+        // pre[0]表示前一个房子不偷的最高金额，pre[1]表示前一个房子偷的最高金额
+        int[] pre = new int[2];
+        // cur[0]表示当前房子不偷的最高金额，cur[1]表示当前房子偷的最高金额
+        int[] cur = new int[2];
+        pre[0] = 0;
+        pre[1] = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            y[0] = Math.max(x[0], x[1]);
-            y[1] = x[0] + nums[i];
-            x[0] = y[0];
-            x[1] = y[1];
+            cur[0] = Math.max(pre[0], pre[1]);
+            cur[1] = pre[0]  + nums[i];
+            pre[0] = cur[0];
+            pre[1] = cur[1];
         }
-        return Math.max(x[0], x[1]);
+        return Math.max(pre[0], pre[1]);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

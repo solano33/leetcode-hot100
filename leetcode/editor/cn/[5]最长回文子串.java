@@ -33,8 +33,9 @@
 class Solution {
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) return s;
+        int left = 0, right = 0;
+        int maxLen = 1;
         int n = s.length();
-        int maxLen = 1, left = 0;
         boolean[][] dp = new boolean[n][n];
         for (int i = 0; i < n; i++) dp[i][i] = true;
         for (int len = 2; len <= n; len++) {
@@ -44,11 +45,11 @@ class Solution {
                 if (lc != rc) continue;
                 if (len > 2 && !dp[l+1][r-1]) continue;
                 dp[l][r] = true;
-                maxLen = len;
+                maxLen = len; // 这里不用加判断是因为 len 是不断递增的，后来赋值的肯定更大
                 left = l;
             }
         }
-        return s.substring(left, left + maxLen);
+        return s.substring(left, right + 1);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

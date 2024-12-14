@@ -51,13 +51,11 @@ class Solution {
         stack.push(-1); // 外边界
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
-            if (c == '(') {
-                stack.push(i);
-            } else {
-                if (stack.peek() == -1 || s.charAt(stack.peek()) == ')') {
-                    stack.push(i);  // 这里直接 push 是为了满足当前栈顶是界外的边界
-                } else {
-                    stack.pop(); // 匹配抵消
+            if (c == '(') stack.push(i);
+            else {
+                if (stack.peek() == -1 || s.charAt(stack.peek()) == ')') stack.push(i);
+                else {
+                    stack.pop(); // 左括号
                     res = Math.max(res, i - stack.peek());
                 }
             }

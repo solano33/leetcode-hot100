@@ -63,20 +63,19 @@ class Solution {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 if (word1.charAt(i-1) == word2.charAt(j-1)) {
-                    // 当前不需要操作
                     dp[i][j] = dp[i-1][j-1];
-                } else {
-                    // 删除双方最后一个元素
-                    dp[i][j] = dp[i-1][j-1] + 1;
+                    continue;
                 }
-                // 删除 word1[i] 或者往 word2 最后添加一个 word1[i]
-                dp[i][j] = Math.min(dp[i][j], dp[i-1][j] + 1);
-                // 类似
-                dp[i][j] = Math.min(dp[i][j], dp[i][j-1] + 1);
+                // 只看双方最后一个元素
+                dp[i][j] = Math.min(dp[i][j], min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1);
             }
         }
         System.out.println(Arrays.deepToString(dp));
         return dp[n][m];
+    }
+
+    private int min(int a, int b, int c) {
+        return Math.min(a, Math.min(b, c));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

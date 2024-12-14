@@ -45,6 +45,7 @@ class Solution {
                     res = Math.max(res, val);
                     val /= nums[l++];
                 }
+                // 第二种情况，r 碰到了 0.这个时候要跨过 0 或者结果取 0
                 if (r < nums.length && nums[r] == 0) res = Math.max(res, 0);
                 l++; r++;
             } else {
