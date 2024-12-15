@@ -69,6 +69,7 @@ class Solution {
         return Math.max(res[0], res[1]);
     }
 
+    // 返回值：res[0]表示 root 不偷的最大价值；res[1]表示 root 偷的最大价值
     private int[] dfs(TreeNode root) {
         int[] res = new int[2];
         if (root == null) return res;

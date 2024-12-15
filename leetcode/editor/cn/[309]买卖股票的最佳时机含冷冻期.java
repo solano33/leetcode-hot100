@@ -41,10 +41,10 @@
 class Solution {
     /**
      * 状态转移方程：
-     * f[i][0] = f[i-1][0] + f[i-1][1] + p[i]
+     * f[i][0] = max(f[i-1][0], f[i-1][1] + p[i])
      *      i 天不持有，i-1天也不持有：收益一样,  f[i-1][0]
      *      i 天不持有，i-1天持有：i 天卖出, f[i-1][1]+p[i]
-     * f[i][1] = f[i-1][1] + f[i-2][0] - p[i]
+     * f[i][1] = max(f[i-1][1], f[i-2][0] - p[i])
      *      i 天持有，就得看前一天
      *          前一天持有，收益一样，f[i-1][1]
      *          前一天不持有：
@@ -53,15 +53,15 @@ class Solution {
      */
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) return 0;
-        // f[i][0]: 表示到第 i 天时，不持有股票的最大收益
-        // f[i][1]: 表示到第 i 天时，持有股票的最大收益
-        int[][] f = new int[prices.length+1][2];
-        f[1][0] = 0; f[1][1] = -prices[0];
+        // dp[i][0]: 表示到第 i 天时，不持有股票的最大收益
+        // dp[i][1]: 表示到第 i 天时，持有股票的最大收益
+        int[][] dp = new int[prices.length+1][2];
+        dp[1][0] = 0; dp[1][1] = -prices[0];
         for (int i = 2; i <= prices.length; i++) {
-            f[i][0] = Math.max(f[i-1][0], f[i-1][1] + prices[i-1]);
-            f[i][1] = Math.max(f[i-1][1], f[i-2][0] - prices[i-1]);
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]+prices[i-1]);
+            dp[i][1] = Math.max(dp[i-1][1], dp[i-2][0] - prices[i-1]);
         }
-        return f[prices.length][0];
+        return dp[prices.length][0];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

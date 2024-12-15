@@ -43,17 +43,18 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0 || amount <= 0) return 0;
+        // dp[i]表示面额为 i 的最少硬币个数
         int[] dp = new int[amount+1];
+        dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
             dp[i] = Integer.MAX_VALUE;
-            for (int j = 0; j < coins.length; j++) {
-                if (i < coins[j]) continue;
-                if (dp[i-coins[j]] == Integer.MAX_VALUE) continue;
-                dp[i] = Math.min(dp[i], dp[i-coins[j]] + 1);
+            for(int c : coins) {
+                if (i < c) continue;
+                if (dp[i-c] == Integer.MAX_VALUE) continue;
+                dp[i] = Math.min(dp[i], dp[i-c] + 1);
             }
         }
-        if (dp[amount] == Integer.MAX_VALUE) return -1;
-        return dp[amount];
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

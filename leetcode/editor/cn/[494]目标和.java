@@ -53,8 +53,22 @@ class Solution {
         int n = (s + target) / 2;
         if (n < 0) return 0;
         // 从 nums 中取出 n 个物品使得背包容量为 n
-        // dp[i][j] 表示前 i 个物品容量和为 j 的组合数量 01背包问题 有点区别，原始的 01背包问题是求最大价值
-        return dp2(nums, n);
+        // dp[i][j] 表示前 i 个物品容量和为 j 的组合数量
+        // 跟01背包问题 有点区别，原始的 01背包问题是求最大价值
+        return dp3(nums, n);
+    }
+
+    private int dp3(int[] nums, int target) {
+        int[][] dp = new int[nums.length+1][target+1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= nums.length; i++) {
+            for (int j = 0; j <= target; j++) {
+                // 第 i 个元素取不取
+                dp[i][j] = dp[i-1][j];
+                if (j >= nums[i-1]) dp[i][j] += dp[i-1][j-nums[i-1]];
+            }
+        }
+        return dp[nums.length][target];
     }
 
     /**

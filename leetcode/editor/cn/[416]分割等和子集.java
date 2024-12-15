@@ -32,23 +32,24 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean canPartition(int[] nums) {
-        // dp[i][s]: 表示前 i 个元素，能否凑出和为 s
+        if (nums == null || nums.length == 0) return true;
         int sum = 0;
         for (int num : nums) sum += num;
         if (sum % 2 != 0) return false;
         int target = sum / 2;
-        dp = new int[nums.length][target+1];
-        return dfs(nums, nums.length - 1, target) == 1;
+        // dp[i][target] 前 i 个元素是否可以凑出和为 target   0：未搜索   1：可以   -1：不可以
+        dp = new int[nums.length + 1][target + 1];
+        return dfs(nums, target, nums.length - 1) == 1;
     }
 
-    private int dp[][];
+    private int[][] dp;
 
-    private int dfs(int[] nums, int n, int target) {
+    private int dfs(int[] nums, int target, int n) {
         if (target == 0) return 1;
-        if (n < 0 || target < 0) return -1;
+        if (target < 0 || n < 0) return -1;
         if (dp[n][target] != 0) return dp[n][target];
         // 第 n 个选或者不选
-        if (dfs(nums, n-1, target-nums[n]) == 1 || dfs(nums, n-1, target) == 1) {
+        if (dfs(nums, n - 1, target - nums[n]) == 1 || dfs(nums, n - 1, target) == 1) {
             dp[n][target] = 1;
         } else {
             dp[n][target] = -1;
