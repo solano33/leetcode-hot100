@@ -38,7 +38,28 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxCoins(int[] nums) {
-        
+        if (nums == null || nums.length == 0) return 0;
+        // 避免边界讨论
+        int n = nums.length;
+        int[] a = new int[n+2];
+        a[0] = 1; a[n+1]=1;
+        for (int i = 1; i <= n; i++) a[i] = nums[i-1];
+        // dp[i][j]表示从 i-j 能获得的最大价值。这里应该逆向考虑，遍历最后一个可能的气球
+        int[][] dp = new int[n+2][n+2];
+        for (int i = 1; i <= n; i++) {
+            dp[i][i] = a[i-1] * a[i] * a[i+1];
+        }
+
+        for (int len = 2; len <= n; len++) {
+            for (int i = 1; i + len - 1 <= n; i++) {
+                int j = i + len - 1;
+                for (int k = i; k <= j; k++) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k-1] + dp[k+1][j] + a[k] * a[i-1] * a[j+1]);
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(dp));
+        return dp[1][nums.length];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
