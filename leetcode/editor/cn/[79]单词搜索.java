@@ -50,29 +50,31 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean exist(char[][] board, String word) {
-        n = board.length;
-        m = board[0].length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        m = board.length;
+        n = board[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (dfs(board, word, i, j, 0)) return true;
             }
         }
         return false;
     }
 
-    private int n, m;
+    private int m, n;
+
     private int[] dr = new int[]{-1, 1, 0, 0};
     private int[] dc = new int[]{0, 0, -1, 1};
-    private boolean dfs(char[][] board, String word, int r, int c, int idx) {
-        if (r < 0 || r >= n || c < 0 || c >= m || board[r][c] == '#') return false;
-        if (idx < word.length() && board[r][c] != word.charAt(idx)) return false;
+    private boolean dfs(char[][] board, String word, int row, int col, int idx) {
+        if (row < 0 || row >= m || col < 0 || col >= n || board[row][col] == '#') return false;
+        if (idx < word.length() && word.charAt(idx) != board[row][col]) return false;
         if (idx == word.length() - 1) return true;
-        char tmp = board[r][c];
-        board[r][c] = '#';
+        char tmp = board[row][col];
+        board[row][col] = '#';
         for (int i = 0; i < 4; i++) {
-            if (dfs(board, word, r + dr[i], c + dc[i], idx + 1)) return true;
+            int rr = row + dr[i], cc = col + dc[i];
+            if (dfs(board, word, rr, cc, idx + 1)) return true;
         }
-        board[r][c] = tmp;
+        board[row][col] = tmp;
         return false;
     }
 }

@@ -1015,6 +1015,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[837]新 21 点.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[837]新 21 点.md" />
+              <option name="frontendQuestionId" value="leetcode.cn837" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[837]新 21 点.java" />
+              <option name="titleSlug" value="new-21-game" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[84]柱状图中最大的矩形.java">
           <value>
             <LeetcodeEditor>

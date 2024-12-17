@@ -38,29 +38,28 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        if (nums == null || nums.length == 0) return res;
-        visited = new boolean[nums.length];
-        dfs(0, nums, new ArrayList<>());
-        return res;
-    }
-
     private List<List<Integer>> res = new ArrayList<>();
     private boolean[] visited;
 
-    private void dfs(int cur, int[] nums, List<Integer> now) {
+    public List<List<Integer>> permute(int[] nums) {
+        if (nums == null || nums.length == 0) return res;
+        visited = new boolean[nums.length];
+        dfs(nums, new ArrayList<>(), 0);
+        return res;
+    }
+
+    private void dfs(int[] nums, List<Integer> nowList, int cur) {
         if (cur == nums.length) {
-            res.add(new ArrayList<>(now));
+            res.add(new ArrayList<>(nowList));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
             if (visited[i]) continue;
             visited[i] = true;
-            now.add(num);
-            dfs(cur + 1, nums, now);
+            nowList.add(nums[i]);
+            dfs(nums, nowList, cur + 1);
+            nowList.remove(nowList.size() - 1);
             visited[i] = false;
-            now.remove(now.size() - 1);
         }
     }
 }

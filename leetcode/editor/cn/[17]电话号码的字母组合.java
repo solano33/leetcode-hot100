@@ -60,5 +60,17 @@ class Solution {
             dfs(digits, cur + 1, nowStr + s.charAt(i));
         }
     }
+
+    private void dfs2(String digits, String nowString, int cur) {
+        if (cur == digits.length()) {
+            res.add(nowString);
+            return;
+        }
+        char c = digits.charAt(cur);
+        int idx = c - '2';
+        for (char a : list[idx].toCharArray()) {
+            dfs2(digits, nowString + a, cur + 1);
+        }
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

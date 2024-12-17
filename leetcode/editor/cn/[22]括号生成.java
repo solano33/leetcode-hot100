@@ -29,25 +29,25 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<String> generateParenthesis(int n) {
-        count = n;
-        dfs(n, n, "");
-        return res;
-    }
-    private int count;
     private List<String> res = new ArrayList<>();
 
-    private void dfs(int leftN, int rightN, String nowStr) {
-        if (nowStr.length() == count * 2) {
+    public List<String> generateParenthesis(int n) {
+        if (n <= 0) return res;
+        dfs("", n, n);
+        return res;
+    }
+
+    private void dfs(String nowStr, int leftCount, int rightCount) {
+        if (leftCount == 0 && rightCount == 0) {
             res.add(nowStr);
             return;
         }
-        if (leftN > rightN) return;
-        if (leftN > 0) {
-            dfs(leftN - 1, rightN, nowStr + "(");
+        if (leftCount > rightCount) return;
+        if (leftCount > 0) {
+            dfs(nowStr + "(", leftCount - 1, rightCount);
         }
-        if (rightN > 0) {
-            dfs(leftN, rightN - 1, nowStr + ")");
+        if (rightCount > 0) {
+            dfs(nowStr + ")", leftCount, rightCount - 1);
         }
     }
 }
