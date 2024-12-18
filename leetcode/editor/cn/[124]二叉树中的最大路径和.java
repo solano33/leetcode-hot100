@@ -55,18 +55,13 @@ class Solution {
         dfs(root);
         return res;
     }
-
     private int res = Integer.MIN_VALUE;
-
-    /**
-     * 从 root 开始的最大路径
-     */
     private int dfs(TreeNode root) {
         if (root == null) return 0;
         int left = Math.max(0, dfs(root.left));
         int right = Math.max(0, dfs(root.right));
         res = Math.max(res, left + right + root.val);
-        return root.val + Math.max(left, right);
+        return Math.max(left, right) + root.val;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

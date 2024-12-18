@@ -62,11 +62,10 @@ class Solution {
 
     public TreeNode dfs(TreeNode root) {
         if (root == null) return null;
-        TreeNode tmp = root.left;
-        root.left = root.right;
-        root.right = tmp;
-        dfs(root.left);
-        dfs(root.right);
+        TreeNode newRight = dfs(root.left);
+        TreeNode newLeft = dfs(root.right);
+        root.left = newLeft;
+        root.right = newRight;
         return root;
     }
 }

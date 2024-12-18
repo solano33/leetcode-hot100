@@ -59,6 +59,7 @@ class Solution {
         return target;
     }
 
+
     private TreeNode target = null;
     /**
      * 从 root 开始找，如果找到 q 则第二位置为 1，如果找到 p 则第一位置为 1
