@@ -34,26 +34,23 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        res = new ArrayList<>();
-        dfs(nums, 0, new ArrayList<>());
+        if (nums == null || nums.length == 0) return res;
+        dfs(nums, new ArrayList<>(), 0);
         return res;
     }
-
-    private List<List<Integer>> res;
-
-    private void dfs(int[] nums, int idx, List<Integer> per) {
-        if (idx == nums.length) {
-            res.add(new ArrayList<>(per));
+    private List<List<Integer>> res = new ArrayList<>();
+    private void dfs(int[] nums, List<Integer> nowList, int cur) {
+        if (cur == nums.length) {
+            res.add(new ArrayList<>(nowList));
             return;
         }
         // 不选当前元素
-        dfs(nums, idx + 1, per);
+        dfs(nums, nowList, cur + 1);
 
         // 选当前元素
-        per.add(nums[idx]);
-        dfs(nums, idx + 1, per);
-
-        per.remove(per.size() - 1);
+        nowList.add(nums[cur]);
+        dfs(nums, nowList, cur + 1);
+        nowList.remove(nowList.size() - 1);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
