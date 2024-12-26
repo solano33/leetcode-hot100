@@ -55,7 +55,52 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int findDuplicate(int[] nums) {
-        
+        return fun2(nums);
+    }
+
+    /**
+     * 进阶版，快慢指针，龟兔赛跑
+     */
+    public int fun2(int[] nums) {
+        int slow = 0, fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        fast = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+
+    /**
+     * swap做法，会改变 nums
+     */
+    public int fun1(int[] nums) {
+        int n = nums.length - 1;
+        // 遍历数组，将每个数字放到它应该在的位置（即 nums[i] 应该放在 i 位置）
+        for (int i = 0; i < n; i++) {
+            // 如果当前位置的数字不是 i+1，即 nums[i] 不是它应该在的位置
+            while (nums[i] != i + 1) {
+                int rightIdx = nums[i] - 1;
+                if (nums[rightIdx] == rightIdx + 1) {
+                    // 如果交换后 nums[rightIdx] 与 nums[i] 相同，说明找到了重复的数字
+                    return rightIdx + 1;
+                } else {
+                    // 否则，交换 nums[i] 和 nums[rightIdx]
+                    swap(nums, i, rightIdx);
+                }
+            }
+        }
+        // 循环结束后，返回最后一个元素，因为最后一个元素是重复的
+        return nums[n];
+    }
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
