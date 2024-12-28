@@ -35,15 +35,19 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean canJump(int[] nums) {
-        
+        return fun1(nums);
     }
 
     public boolean fun1(int[] nums) {
         int n = nums.length;
         int left = 0, right = 0;
-        while (left < right && right < n) {
-
+        while (right < n - 1) {
+            int maxRight = left + nums[left];
+            right = Math.max(right, maxRight);
+            if (right == left) break; // 已经没法跳到下个节点了
+            left++;
         }
+        return right >= n - 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
