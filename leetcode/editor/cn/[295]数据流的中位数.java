@@ -44,7 +44,13 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class MedianFinder {
 
+    /**
+     * 存小的二分之一(或者多一个)，用大根堆
+     */
     private PriorityQueue<Integer> minQ = new PriorityQueue<>((a, b) -> b - a);
+    /**
+     * 存大的二分之一，用小根堆
+     */
     private PriorityQueue<Integer> maxQ = new PriorityQueue<>((a, b) -> a - b);
 
 
@@ -53,11 +59,27 @@ class MedianFinder {
     }
     
     public void addNum(int num) {
-        
+        if (minQ.isEmpty() || minQ.peek() >= num) {
+            minQ.offer(num);
+            if (minQ.size() - maxQ.size() > 1) {
+                maxQ.offer(minQ.poll());
+            }
+        } else {
+            maxQ.offer(num);
+            if (minQ.size() < maxQ.size()) {
+                minQ.offer(maxQ.poll());
+            }
+        }
     }
     
     public double findMedian() {
-        
+        int minSize = minQ.size(), maxSize = maxQ.size();
+        System.out.println("minSize = " + minSize);
+        System.out.println("maxSize = " + maxSize);
+        if (minSize > maxSize) {
+            return minQ.peek();
+        }
+        return (minQ.peek() + maxQ.peek()) / 2.0;
     }
 }
 
