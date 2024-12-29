@@ -50,7 +50,8 @@
 class MinStack {
 
     private Stack<Integer> stack = new Stack<>();
-    private PriorityQueue<Integer> queue = new PriorityQueue<>();
+    // 最小栈实现
+    private Stack<Integer> minStack = new Stack<>();
 
     public MinStack() {
         
@@ -58,12 +59,17 @@ class MinStack {
     
     public void push(int val) {
         stack.push(val);
-        queue.offer(val);
+        if (minStack.isEmpty()) {
+            minStack.push(val);
+        } else {
+            int min = minStack.peek();
+            minStack.push(Math.min(min, val));
+        }
     }
     
     public void pop() {
-        int num = stack.pop();
-        queue.remove(num);
+        stack.pop();
+        minStack.pop();
     }
     
     public int top() {
@@ -71,7 +77,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return queue.peek();
+        return minStack.peek();
     }
 }
 
