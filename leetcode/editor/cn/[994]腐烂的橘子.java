@@ -57,12 +57,44 @@ class Solution {
     public int orangesRotting(int[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) return 0;
         int m = grid.length, n = grid[0].length;
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                dfs()
+                if (grid[i][j] == 2) {
+                    int code = i * n + j;
+                    queue.offer(code);
+                }
             }
         }
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                int code = queue.poll();
+                int r = code / n, c = code % n;
+                for (int j = 0; j < 4; j++) {
+                    int rr = r + dr[j], cc = c + dc[j];
+                    if (rr >= 0 && rr < m && cc >= 0 && cc < n && grid[rr][cc] == 1) {
+                        grid[rr][cc] = 2;
+                        int ncode = rr * n + cc;
+                        queue.offer(ncode);
+                    }
+                }
+            }
+            res++;
+        }
+        boolean empty = true;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) return -1;
+                if (grid[i][j] != 0) empty = false;
+            }
+        }
+        if (empty) return 0;
+        return res;
     }
-    private int res = 0;
+    private int res = -1;
+    private int[] dr = {-1, 1, 0, 0};
+    private int[] dc = {0, 0, -1, 1};
 }
 //leetcode submit region end(Prohibit modification and deletion)
