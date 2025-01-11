@@ -73,11 +73,11 @@ public class Solution {
 
     public boolean fun4(ListNode head) {
         if (head == null) return false;
-        ListNode fast = head.next, slow = head;
+        ListNode fast = head, slow = head;
         while (fast != null && fast.next != null) {
-            if (slow == fast) return true;
-            slow = slow.next;
             fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) return true;
         }
         return false;
     }

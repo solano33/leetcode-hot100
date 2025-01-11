@@ -60,7 +60,6 @@ class Solution {
         Stack<String> stack = new Stack<>();
         for (int i = n - 1; i >= 0; ) {
             char c = s.charAt(i);
-
             if (c == ']' || Character.isLetter(c)) {
                 stack.push(c + "");
                 i--;
@@ -74,7 +73,6 @@ class Solution {
                 if (!stack.isEmpty()) stack.pop();
                 // 索引往左，跳过 ]
                 i--;
-
                 // 读数字
                 int num = 0, base = 1;
                 while (i >= 0 && Character.isDigit(s.charAt(i))) {
@@ -82,13 +80,11 @@ class Solution {
                     base *= 10;
                     i--;
                 }
-
                 String newStr = "";
                 while (num > 0) {
                     newStr += nowStr;
                     num--;
                 }
-
                 stack.push(newStr);
             }
         }

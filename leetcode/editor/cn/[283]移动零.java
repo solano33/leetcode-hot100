@@ -38,11 +38,27 @@
 class Solution {
     public void moveZeroes(int[] nums) {
 //        fun1(nums);
-        fun4(nums);
+        fun5(nums);
+    }
+    private void fun5(int[] nums) {
+        if (nums == null || nums.length == 0) return;
+        // l找0, r找非0
+        int l = 0, r= 1;
+        while (l < r && r < nums.length) {
+            if (nums[l] != 0) {
+                l++;
+                if (l == r) r++;
+            } else if (nums[r] == 0) {
+                r++;
+            } else {
+                swap(nums, l++, r++);
+            }
+        }
     }
 
     private void fun4(int[] nums) {
         if (nums == null || nums.length == 0) return;
+        // l找0, r找非0
         int l = 0, r = 1;
         while (l < r && r < nums.length) {
             if (nums[l] != 0) {

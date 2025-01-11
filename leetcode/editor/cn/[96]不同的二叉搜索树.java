@@ -45,7 +45,6 @@ class Solution {
         }
         return dp[n];
     }
-
     private int dfs(int n) {
         if (n <= 1) return n;
         int[] fn = new int[n + 1];
@@ -53,7 +52,6 @@ class Solution {
         for (int i = 0; i <= n; i++) fn[i] = -1;
         return dfs(fn, n);
     }
-
     private int dfs(int[] fn, int n) {
         if (n == 0) {
             fn[n] = 1;

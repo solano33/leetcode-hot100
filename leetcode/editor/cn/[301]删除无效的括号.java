@@ -70,8 +70,6 @@ class Solution {
         }
         items.add(new Item(str.charAt(str.length() - 1), cnt));
         maxLength = str.length() - s - r;
-        System.out.printf("s = %d, r = %d, maxLength = %d \n", s, r, maxLength);
-        System.out.println("items = " + items);
         return maxLength;
     }
 
@@ -85,7 +83,6 @@ class Solution {
         }
 
         Item item = items.get(cur);
-        System.out.println("item = " + item);
         if (item.c != '(' && item.c != ')') {
             if (len + item.cnt > maxLength) return;
             ans.add(item);
@@ -111,7 +108,6 @@ class Solution {
     }
 
     private String gen(List<Item> ans) {
-        System.out.println("gen");
         String s = "";
         for (Item a : ans) {
             s += a.c;

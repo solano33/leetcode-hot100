@@ -46,8 +46,6 @@ class Solution {
         if (numCourses <= 0 || prerequisites == null || prerequisites.length == 0) return true;
         return dfs(numCourses, prerequisites);
     }
-
-
     private List<List<Integer>> edges = new ArrayList<>();
     private int[] state;
     private int[] stack;
@@ -67,7 +65,6 @@ class Solution {
         System.out.println("stack = " + Arrays.toString(stack));
         return true;
     }
-
     private boolean dfs(int node) {
         // 被自己遍历过了，说明有环
         if (state[node] == 1) return false;
@@ -80,14 +77,11 @@ class Solution {
         for (int nextNode : nextNodes) {
             if (!dfs(nextNode)) return false;
         }
-
         // 全部遍历完了，设置 state，加入栈
         state[node] = -1;
         stack[index++] = node;
         return true;
     }
-
-
 
     private boolean bfs(int numCourses, int[][] prerequisites) {
         int[] inDegree = new int[numCourses];

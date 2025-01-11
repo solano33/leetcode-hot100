@@ -61,13 +61,11 @@ class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         return fun1(lists);
     }
-
     // 分治
     public ListNode fun1(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
         return merge(lists, 0, lists.length - 1);
     }
-
     private ListNode merge(ListNode[] lists, int left, int right) {
         if (left == right) {
             return lists[left];
@@ -78,7 +76,6 @@ class Solution {
         int mid = (left + right) / 2;
         return mergeTwoList(merge(lists, left, mid), merge(lists, mid + 1, right));
     }
-
     private ListNode mergeTwoList(ListNode a, ListNode b) {
         if (a == null) return b;
         if (b == null) return a;

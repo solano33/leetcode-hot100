@@ -47,14 +47,11 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         return fun1(head);
     }
-
     public boolean fun1(ListNode head) {
         if (head == null || head.next == null) return true;
         ListNode center = findCenter(head);
-
         // 反转后半段
         ListNode right = reverse(center.next);
-        System.out.println(right);
         ListNode curLeft = head, curRight = right;
         while (curLeft != null && curRight != null) {
             if (curLeft.val != curRight.val) {
@@ -65,7 +62,6 @@ class Solution {
         }
         return true;
     }
-
     // 奇数：slow为中间点；偶数为中间两个左节点
     public ListNode findCenter(ListNode head) {
         ListNode slow = head, fast = head;
@@ -75,13 +71,17 @@ class Solution {
         }
         return slow;
     }
-
+    // 反转链表
     public ListNode reverse(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode newHead = reverse(head.next);
-        head.next.next = head;
-        head.next = null;
-        return newHead;
+        if (head == null) return head;
+        ListNode now = head, pre = null;
+        while (now != null) {
+            ListNode tmp = now.next;
+            now.next = pre;
+            pre = now;
+            now = tmp;
+        }
+        return pre;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
