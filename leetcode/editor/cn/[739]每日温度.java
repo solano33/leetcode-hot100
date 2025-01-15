@@ -38,21 +38,23 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
-        return fun1(temperatures);
-    }
-
-    // 超时
-    public int[] fun1(int[] temperatures) {
-        int n = temperatures.length;
-        int[] res = new int[n];
-        for (int i = 0; i < n; i++) {
-            int j = i + 1;
-            for ( ; j < n; j++) {
-                if (temperatures[i] < temperatures[j]) break;
+        int length = temperatures.length;
+        int[] ans = new int[length];
+        int[] next = new int[101];
+        Arrays.fill(next, Integer.MAX_VALUE);
+        for (int i = length - 1; i >= 0; --i) {
+            int warmerIndex = Integer.MAX_VALUE;
+            for (int t = temperatures[i] + 1; t <= 100; ++t) {
+                if (next[t] < warmerIndex) {
+                    warmerIndex = next[t];
+                }
             }
-            res[i] = j == n ? 0 : j - i;
+            if (warmerIndex < Integer.MAX_VALUE) {
+                ans[i] = warmerIndex - i;
+            }
+            next[temperatures[i]] = i;
         }
-        return res;
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

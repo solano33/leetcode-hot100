@@ -52,12 +52,9 @@ class MedianFinder {
      * 存大的二分之一，用小根堆
      */
     private PriorityQueue<Integer> maxQ = new PriorityQueue<>((a, b) -> a - b);
-
-
     public MedianFinder() {
         
     }
-    
     public void addNum(int num) {
         if (minQ.isEmpty() || minQ.peek() >= num) {
             minQ.offer(num);
@@ -71,11 +68,8 @@ class MedianFinder {
             }
         }
     }
-    
     public double findMedian() {
         int minSize = minQ.size(), maxSize = maxQ.size();
-        System.out.println("minSize = " + minSize);
-        System.out.println("maxSize = " + maxSize);
         if (minSize > maxSize) {
             return minQ.peek();
         }

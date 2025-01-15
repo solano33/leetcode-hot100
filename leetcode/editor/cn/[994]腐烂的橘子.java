@@ -66,7 +66,6 @@ class Solution {
                 }
             }
         }
-
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
             for (int i = 0; i < levelSize; i++) {
